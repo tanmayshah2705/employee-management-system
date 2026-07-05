@@ -2,14 +2,7 @@
 
 A Java Swing desktop application for managing employee records — add, edit, delete,
 search, and export to PDF — backed by MySQL. On first launch the app **automatically
-creates its database and tables, pre-seeded with major Indian states and cities**,
-so setup is minimal.
-
-## Screenshot
-
-![Main window](docs/main-window.png)
-
-*The main window: a searchable list of employees with add / edit / delete and PDF export.*
+creates its database and tables, pre-seeded with data**.
 
 ## Features
 
@@ -18,8 +11,22 @@ so setup is minimal.
 - Export the employee table to a formatted PDF report (iText)
 - Input validation for dates, salary, and required fields
 - **Automatic database setup on first run** — no manual SQL import needed
-- **Pre-seeded with major Indian states and cities** so the Add/Edit dropdowns work out of the box
+- **Pre-seeded with major states and cities** so the Add/Edit dropdowns work out of the box
 - Database credentials kept out of the code, in an external `db.properties` file
+
+## Screenshots
+
+![Main window](docs/main_window.png)
+
+*The main window: a searchable list of employees with add / edit / delete and PDF export.*
+
+![Add window](docs/add_window.png)
+
+*The add window: Adding a new employee: fill in ID, name, date of birth, city, gender, and salary, then Save.*
+
+![Exported pdf](docs/exported_pdf.png)
+
+*The exported pdf: One-click PDF export: a paginated, formatted Employee Table Report with headers and page numbers.*
 
 ## Tech Stack
 
@@ -30,7 +37,7 @@ Java (Swing / AWT) · MySQL (JDBC) · iText (PDF generation)
 - JDK 8 or later
 - MySQL Server 8.x, running locally
 - A MySQL account allowed to create databases (e.g. `root`) — needed the first time
-- MySQL Connector/J and iText jars (already included in `lib/` in the release)
+- MySQL Connector/J and iText jars (included in `lib/` in the release)
 
 ## Quick Start (from a release download)
 
@@ -73,12 +80,11 @@ resolve correctly. On Linux/macOS use `:` instead of `;` in the classpath.
 2. It checks whether the database named in `db.name` already exists.
 3. If not, it creates the database and runs `database/schema.sql` to build the
    tables and seed them with major Indian states and cities.
-4. On subsequent runs the database exists, so setup is skipped and your data is kept.
+4. On subsequent runs the database exists, so setup is skipped and data is kept.
 
 ## Adding cities or states
 
-The database comes pre-seeded with major Indian states and cities, so the
-Add/Edit forms work right away. To add more, use the MySQL CLI:
+To add more cities or states, use the MySQL CLI:
 
 ```
 mysql -u root -p employees_database
@@ -105,7 +111,7 @@ Restart the app to see the new entries in the City dropdown.
 | `database/schema.sql` | Database schema + seed data (states & cities) |
 | `resources/` | Images and assets (e.g. the export button logo) |
 | `db.properties.example` | Configuration template |
-| `lib/` | Dependency jars (bundled in releases; not committed) |
+| `lib/` | Dependency jars (bundled in releases) |
 
 ## Troubleshooting
 
