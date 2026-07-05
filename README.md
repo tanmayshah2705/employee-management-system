@@ -2,7 +2,7 @@
 
 A Java Swing desktop application for managing employee records — add, edit, delete,
 search, and export to PDF — backed by MySQL. On first launch the app **automatically
-creates its database and seeds it with data**, so setup is minimal.
+creates its database and tables**, so setup is minimal.
 
 ## Screenshot
 
@@ -42,7 +42,7 @@ Java (Swing / AWT) · MySQL (JDBC) · iText (PDF generation)
    ```
    java -jar EmployeeManagementSystem.jar
    ```
-   On first launch it creates the `db_5_aug2` database, its tables, and seed data
+   On first launch it creates the `employees_database` database and its tables
    automatically. On later runs your existing data is preserved.
 
 ## Run from source
@@ -65,22 +65,20 @@ resolve correctly. On Linux/macOS use `:` instead of `;` in the classpath.
 | `db.url` | Full JDBC URL including the database |
 | `db.user` / `db.password` | MySQL credentials (needs create rights on first run) |
 
-`db.properties` is git-ignored so your real credentials never get committed. A
-template with the required keys lives in `db.properties.example`.
-
 ## How first-run setup works
 
 1. The app connects to the MySQL **server** using `db.serverUrl`.
 2. It checks whether the database named in `db.name` already exists.
-3. If not, it reads `database/schema.sql` (schema + data) and executes it.
-4. On subsequent runs the database exists, so setup is skipped and data is kept.
+3. If not, it creates the database and reads `database/schema.sql` (the table
+   definitions) to build the tables.
+4. On subsequent runs the database exists, so setup is skipped and your data is kept.
 
 ## Project Structure
 
 | Path | Purpose |
 |------|---------|
 | `src/awtCRUD.java` | Application source (UI, models, DB access, PDF export) |
-| `database/schema.sql` | Database schema and seed data |
+| `database/schema.sql` | Database schema (table definitions) |
 | `resources/` | Images and assets (e.g. the export button logo) |
 | `db.properties.example` | Configuration template |
 | `lib/` | Dependency jars (bundled in releases; not committed) |

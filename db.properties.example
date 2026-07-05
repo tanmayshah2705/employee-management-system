@@ -2,9 +2,9 @@ db.driver=com.mysql.cj.jdbc.Driver
 # Server connection (no database) — used to create the database on first run
 db.serverUrl=jdbc:mysql://localhost:3306/?useSSL=false&allowPublicKeyRetrieval=true
 # Name of the database the app creates/uses
-db.name=db_5_aug2
+db.name=employees_database
 # Full JDBC URL including the database
-db.url=jdbc:mysql://localhost:3306/db_5_aug2?useSSL=false&allowPublicKeyRetrieval=true
+db.url=jdbc:mysql://localhost:3306/employees_database?useSSL=false&allowPublicKeyRetrieval=true
 # Use a MySQL account allowed to create databases on first run (e.g. root)
 db.user=root
 db.password=your_mysql_password

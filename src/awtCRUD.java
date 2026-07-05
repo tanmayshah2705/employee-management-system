@@ -82,7 +82,7 @@ statement.close();
 connection.close();
 }catch(Exception exception)
 {
-System.out.println(exception);
+JOptionPane.showMessageDialog(null,"Failed to load data from the database.\n\nMake sure MySQL is running and 'db.properties' is configured correctly.\n\nDetails: " + exception.getMessage(),"Database Error",JOptionPane.ERROR_MESSAGE);
 System.exit(0); //application ends
 }
 }
@@ -214,7 +214,7 @@ statement.close();
 connection.close();
 }catch(Exception exception)
 {
-System.out.println(exception);
+JOptionPane.showMessageDialog(null,"Failed to load data from the database.\n\nMake sure MySQL is running and 'db.properties' is configured correctly.\n\nDetails: " + exception.getMessage(),"Database Error",JOptionPane.ERROR_MESSAGE);
 System.exit(0); //application ends
 }
 }
@@ -453,7 +453,6 @@ canvas.lineTo(document.getPageSize().getRight()+70, document.getPageSize().getBo
 canvas.stroke();
 */
 ColumnText.showTextAligned(canvas,Element.ALIGN_CENTER,new Paragraph("Generated on: " + new java.util.Date(),new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA,12,com.itextpdf.text.Font.NORMAL)),x,document.getPageSize().getBottom()+53,0);
-ColumnText.showTextAligned(canvas,Element.ALIGN_CENTER,new Paragraph("© 2025 Company Name. All rights reserved."),x,document.getPageSize().getBottom()+40,0);
 ColumnText.showTextAligned(canvas,Element.ALIGN_CENTER,new Paragraph(String.valueOf(writer.getPageNumber())),x,document.getPageSize().getBottom()+20,0);
 }
 
@@ -1609,7 +1608,10 @@ resultSet.close();
 
 if(!alreadySetup)
 {
-// First run: read database/schema.sql (schema + data) and execute it
+// First run: create the database and its tables (schema only, no data)
+statement.execute("CREATE DATABASE IF NOT EXISTS `" + DBConfig.dbName + "`");
+statement.execute("USE `" + DBConfig.dbName + "`");
+
 StringBuilder script = new StringBuilder();
 BufferedReader reader = new BufferedReader(new FileReader("database/schema.sql"));
 String line;
