@@ -1,0 +1,27 @@
+# Compiled output
+*.class
+bin/
+
+# Dependency jars (downloaded separately — see README)
+lib/
+*.jar
+
+# Real DB credentials — never commit
+db.properties
+
+# Generated PDF exports
+*.pdf
+
+# Release build artifacts
+release/
+*.zip
+
+# Scratch / backups
+temp.java
+
+# Editor / OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
