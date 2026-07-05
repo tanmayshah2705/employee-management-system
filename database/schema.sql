@@ -164,3 +164,51 @@ CREATE TABLE `state` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2026-07-05 14:07:10
+
+--
+-- Seed data: major states and cities (reference data for the Add/Edit forms)
+--
+INSERT INTO `state` (`code`, `name`) VALUES
+(1,'Andhra Pradesh'),(2,'Arunachal Pradesh'),(3,'Assam'),(4,'Bihar'),(5,'Chhattisgarh'),
+(6,'Goa'),(7,'Gujarat'),(8,'Haryana'),(9,'Himachal Pradesh'),(10,'Jharkhand'),
+(11,'Karnataka'),(12,'Kerala'),(13,'Madhya Pradesh'),(14,'Maharashtra'),(15,'Manipur'),
+(16,'Meghalaya'),(17,'Mizoram'),(18,'Nagaland'),(19,'Odisha'),(20,'Punjab'),
+(21,'Rajasthan'),(22,'Sikkim'),(23,'Tamil Nadu'),(24,'Telangana'),(25,'Tripura'),
+(26,'Uttar Pradesh'),(27,'Uttarakhand'),(28,'West Bengal'),(29,'Delhi'),(30,'Jammu and Kashmir'),
+(31,'Ladakh'),(32,'Puducherry'),(33,'Chandigarh'),(34,'Andaman and Nicobar');
+
+INSERT INTO `city` (`name`, `state_code`) VALUES
+('Visakhapatnam',1),('Vijayawada',1),('Guntur',1),('Nellore',1),('Tirupati',1),
+('Itanagar',2),
+('Guwahati',3),('Dibrugarh',3),('Silchar',3),
+('Patna',4),('Gaya',4),('Bhagalpur',4),('Muzaffarpur',4),
+('Raipur',5),('Bhilai',5),('Bilaspur',5),
+('Panaji',6),('Margao',6),('Vasco da Gama',6),
+('Ahmedabad',7),('Surat',7),('Vadodara',7),('Rajkot',7),('Gandhinagar',7),
+('Faridabad',8),('Gurugram',8),('Panipat',8),('Ambala',8),('Karnal',8),
+('Shimla',9),('Dharamshala',9),('Solan',9),
+('Ranchi',10),('Jamshedpur',10),('Dhanbad',10),('Bokaro',10),
+('Bengaluru',11),('Mysuru',11),('Mangaluru',11),('Hubballi',11),('Belagavi',11),
+('Thiruvananthapuram',12),('Kochi',12),('Kozhikode',12),('Thrissur',12),('Kollam',12),
+('Bhopal',13),('Indore',13),('Jabalpur',13),('Gwalior',13),('Ujjain',13),
+('Mumbai',14),('Pune',14),('Nagpur',14),('Nashik',14),('Aurangabad',14),('Thane',14),
+('Imphal',15),
+('Shillong',16),
+('Aizawl',17),
+('Kohima',18),('Dimapur',18),
+('Bhubaneswar',19),('Cuttack',19),('Rourkela',19),('Puri',19),
+('Ludhiana',20),('Amritsar',20),('Jalandhar',20),('Patiala',20),('Bathinda',20),
+('Jaipur',21),('Jodhpur',21),('Udaipur',21),('Kota',21),('Ajmer',21),('Bikaner',21),
+('Gangtok',22),
+('Chennai',23),('Coimbatore',23),('Madurai',23),('Tiruchirappalli',23),('Salem',23),('Tirunelveli',23),
+('Hyderabad',24),('Warangal',24),('Nizamabad',24),('Karimnagar',24),
+('Agartala',25),
+('Lucknow',26),('Kanpur',26),('Agra',26),('Varanasi',26),('Prayagraj',26),('Ghaziabad',26),('Noida',26),('Meerut',26),
+('Dehradun',27),('Haridwar',27),('Nainital',27),('Rishikesh',27),
+('Kolkata',28),('Howrah',28),('Durgapur',28),('Asansol',28),('Siliguri',28),
+('New Delhi',29),('Delhi',29),
+('Srinagar',30),('Jammu',30),
+('Leh',31),
+('Puducherry',32),
+('Chandigarh',33),
+('Port Blair',34);

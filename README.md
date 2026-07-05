@@ -2,7 +2,8 @@
 
 A Java Swing desktop application for managing employee records — add, edit, delete,
 search, and export to PDF — backed by MySQL. On first launch the app **automatically
-creates its database and tables**, so setup is minimal.
+creates its database and tables, pre-seeded with major Indian states and cities**,
+so setup is minimal.
 
 ## Screenshot
 
@@ -17,6 +18,7 @@ creates its database and tables**, so setup is minimal.
 - Export the employee table to a formatted PDF report (iText)
 - Input validation for dates, salary, and required fields
 - **Automatic database setup on first run** — no manual SQL import needed
+- **Pre-seeded with major Indian states and cities** so the Add/Edit dropdowns work out of the box
 - Database credentials kept out of the code, in an external `db.properties` file
 
 ## Tech Stack
@@ -69,16 +71,38 @@ resolve correctly. On Linux/macOS use `:` instead of `;` in the classpath.
 
 1. The app connects to the MySQL **server** using `db.serverUrl`.
 2. It checks whether the database named in `db.name` already exists.
-3. If not, it creates the database and reads `database/schema.sql` (the table
-   definitions) to build the tables.
+3. If not, it creates the database and runs `database/schema.sql` to build the
+   tables and seed them with major Indian states and cities.
 4. On subsequent runs the database exists, so setup is skipped and your data is kept.
+
+## Adding cities or states
+
+The database comes pre-seeded with major Indian states and cities, so the
+Add/Edit forms work right away. To add more, use the MySQL CLI:
+
+```
+mysql -u root -p employees_database
+```
+
+```sql
+-- Add a new city to an existing state (state looked up by name)
+INSERT INTO city (name, state_code)
+VALUES ('Vellore', (SELECT code FROM state WHERE name = 'Tamil Nadu'));
+
+-- Add a brand-new state, then a city in it
+INSERT INTO state (name) VALUES ('Lakshadweep');
+INSERT INTO city (name, state_code)
+VALUES ('Kavaratti', (SELECT code FROM state WHERE name = 'Lakshadweep'));
+```
+
+Restart the app to see the new entries in the City dropdown.
 
 ## Project Structure
 
 | Path | Purpose |
 |------|---------|
 | `src/awtCRUD.java` | Application source (UI, models, DB access, PDF export) |
-| `database/schema.sql` | Database schema (table definitions) |
+| `database/schema.sql` | Database schema + seed data (states & cities) |
 | `resources/` | Images and assets (e.g. the export button logo) |
 | `db.properties.example` | Configuration template |
 | `lib/` | Dependency jars (bundled in releases; not committed) |
