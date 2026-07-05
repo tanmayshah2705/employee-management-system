@@ -4,6 +4,12 @@ A Java Swing desktop application for managing employee records — add, edit, de
 search, and export to PDF — backed by MySQL. On first launch the app **automatically
 creates its database and seeds it with data**, so setup is minimal.
 
+## Screenshot
+
+![Main window](docs/main-window.png)
+
+*The main window: a searchable list of employees with add / edit / delete and PDF export.*
+
 ## Features
 
 - Add, edit, delete, and search employees
